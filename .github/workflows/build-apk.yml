@@ -18,24 +18,24 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - uses: android-actions/setup-android@v3
-
+      # GitHub's Ubuntu machines already include the Android SDK (ANDROID_HOME is set),
+      # so no extra Android setup step is needed.
       - name: Build
         run: |
           chmod +x gradlew
           ./gradlew assembleRelease --no-daemon
-          cp app/build/outputs/apk/release/app-release.apk LumenTV.apk
+          cp app/build/outputs/apk/release/app-release.apk RakeshTV.apk
 
       - uses: actions/upload-artifact@v4
         with:
-          name: LumenTV-apk
-          path: LumenTV.apk
+          name: RakeshTV-apk
+          path: RakeshTV.apk
 
-      # Publishes the APK at a fixed link the TV can download over Wi-Fi:
-      # https://github.com/<you>/<repo>/releases/latest/download/LumenTV.apk
+      # Publishes the APK at a fixed link:
+      # https://github.com/rakeshbuildsit/RakeshTV/releases/latest/download/RakeshTV.apk
       - uses: softprops/action-gh-release@v2
         with:
           tag_name: build-${{ github.run_number }}
-          name: Lumen TV build ${{ github.run_number }}
+          name: RakeshTV build ${{ github.run_number }}
           make_latest: true
-          files: LumenTV.apk
+          files: RakeshTV.apk
