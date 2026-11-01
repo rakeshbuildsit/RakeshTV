@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RakeshTV</string>
+    <string name="service_label">RakeshTV – Home button</string>
+    <string name="service_description">Opens RakeshTV whenever the stock home screen (Fire TV home or PatchWall) appears, so the Home button on your remote takes you to RakeshTV. It only watches which app is on screen and reads nothing else.</string>
+</resources>

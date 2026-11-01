@@ -1,0 +1,32 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.lumen.tvlauncher'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'com.lumen.tvlauncher'
+        minSdk 22
+        targetSdk 34
+        versionCode 1
+        versionName '1.0'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            // Signed with the debug key so the release APK installs directly on your TV.
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+// No external libraries: the whole launcher uses only the Android framework,
+// so it stays tiny and fast on low-memory Mi TVs.
