@@ -1,94 +1,180 @@
-# RakeshTV – custom home screen for your Redmi Fire TV
+# RakeshTV 📺
 
-Written for the **Redmi Fire TV (TTE_L32R8-FVIN), Fire OS 7.7**. It also works on Android TV and Google TV.
+**A clean, fast, ad-free home screen for the Redmi Fire TV.**
 
-What you get:
-- **Opens by itself when the TV turns on**, from standby or a full power-up. You can switch this off in RakeshTV's ⚙ settings.
-- **Top left:** your TV's name, a greeting and an **Inputs** button (HDMI / AV)
-- **Top right:** time with seconds and the date, plus **Wi-Fi** (shows connected or offline), **Bluetooth** and **⚙** buttons
-- **Home apps:** YouTube, Prime Video, Netflix, Hotstar, aha and the Appstore come first, if they're installed. Install any missing ones, then use ⚙ → Reset home apps.
-- **All apps grid** with 4–7 apps per row, and no ads or sponsored rows
-- 7 wallpaper themes and 6 highlight colours
-- Tiles zoom and light up as you move with the remote
-- Hold **OK** (or press **☰ Menu**) on any app to add it to favourites, move it left or right, hide it, see app info or uninstall it
-- Very lightweight (no extra libraries), so it suits the TV's small memory
+RakeshTV replaces Amazon's busy, ad-filled home with a simple screen: your favourite apps, all your apps, the clock, and quick buttons for Wi-Fi, Bluetooth and inputs. It opens by itself when the TV turns on, and you return to it when you leave any app.
 
-> **Honest note about the Home button:** Amazon doesn't let any app replace the Fire TV home screen, and it keeps blocking the tricks people use. RakeshTV works fully as an app. The best everyday setup is to pin it as the **first app** on the Fire TV home (step 4), so it's one click after you press Home.
+Built for the **Redmi Fire TV 32" (TTE_L32R8-FVIN), Fire OS 7.7**. It also works on Android TV and Google TV.
 
 ---
 
-## 1. Build the APK on GitHub (free, nothing to install)
-1. Create a free account at github.com and make a **new repository**, for example `lumen-tv`. Set it to **Public** so the TV can download the APK without signing in.
-2. On the repository page, choose **Add file → Upload files** and drag in **everything inside this folder**, including the hidden `.github` folder. Then click **Commit**.
-   - If `.github` doesn't upload, create the file `.github/workflows/build-apk.yml` with "Add file → Create new file" and paste its contents in.
-3. Open the **Actions** tab and wait about 3–5 minutes for a green tick.
-4. Your APK is now at this fixed link (put in your own username and repository name):
-   ```
-   https://github.com/<your-username>/<repo-name>/releases/latest/download/RakeshTVTV.apk
-   ```
-   Tip: shorten it at tinyurl.com, so on the TV you only type something like `tinyurl.com/mylumen`.
+## The home screen
 
-(If you have a PC, you can instead open this folder in Android Studio and choose Build → Build APK(s).)
-
----
-
-## 2. Prepare the Fire TV (one time)
-1. **Unlock Developer options:** go to **Settings → My Fire TV → About**, highlight the first item (your TV's name) and press **OK 7 times**. You'll see "You are now a developer".
-2. Press Back. **Developer options** now appears under **My Fire TV**.
-3. Install **Downloader** (orange icon, by AFTVnews). Press the search 🔍 on the home screen, type "Downloader", and install it from the Amazon Appstore.
-4. Go back to **Settings → My Fire TV → Developer options → Install unknown apps** and turn **Downloader → ON**.
-
----
-
-## 3. Install RakeshTV over Wi-Fi
-1. Open **Downloader** and allow access to files if asked.
-2. In the URL box, type your link from step 1, or the tinyurl shortcut.
-   - To type faster, install the **Amazon Fire TV** app on your phone, connect to the TV and use your phone keyboard.
-3. Press **Go**, then **Install** when the APK opens. Then choose **Done** and **Delete** to remove the leftover file.
-
-**No GitHub?** Install **"Send Files to TV"** on your phone (Play Store) and on the Fire TV (Amazon Appstore). With both on the same Wi-Fi, send the APK from your phone and install it from the TV app. Turn on its "Install unknown apps" permission the same way as in step 2.4.
-
----
-
-## 4. Put RakeshTV first on your Fire TV home (recommended)
-1. Press **Home**, then go to the **Apps** icon (the square grid, "Your Apps & Channels").
-2. Highlight **RakeshTV**, press **☰ Menu** on the remote and choose **Move** (or "Move to front").
-3. Move it to the very first spot and press OK.
-
-Now Home → OK takes you straight to RakeshTV.
-
----
-
-## 5. Advanced: try the Home-button takeover (may not work)
-RakeshTV includes a small service that switches to RakeshTV whenever the Fire TV home screen opens. Fire TV hides it from the Accessibility menu, so you turn it on with ADB. You can do that from your **phone**, with no PC needed.
-
-> Amazon has blocked these home-button tricks on newer Fire OS versions. One well-known launcher of this type stopped working after a Fire OS update. It may not work on your 7.7.1.7. Trying it is harmless, and steps to undo it are below.
-
-1. On the TV: **Settings → My Fire TV → Developer options → ADB debugging → ON**.
-2. Find the TV's IP address in **Settings → My Fire TV → About → Network**.
-3. On your Android phone, install an ADB app from the Play Store, such as **"Remote ADB Shell"** or **"Bugjaeger"**. Connect it to `<TV-IP>` on port `5555`. On the TV, accept the "Allow USB debugging?" pop-up and tick "Always allow".
-4. Run these two commands:
-   ```
-   settings put secure enabled_accessibility_services com.lumen.tvlauncher/com.lumen.tvlauncher.HomeOverrideService
-   settings put secure accessibility_enabled 1
-   ```
-   (From a PC, put `adb shell ` in front of each command.)
-5. Press Home. If RakeshTV appears, perhaps after a short flash of the Fire home screen, it worked. If Fire home stays, Amazon is blocking it on this version. Use step 4 instead.
-
-**To undo:**
 ```
-settings put secure enabled_accessibility_services ""
+┌──────────────────────────────────────────────────────────────────┐
+│ Redmi Fire TV                                    12:41:07 PM     │
+│ Good afternoon                          Sunday, 1 November 2026  │
+│ [⇄ Inputs]                         [Wi-Fi ✓] [Bluetooth] [ ⚙ ]   │
+│                                                                  │
+│ Favourites                                                       │
+│ [YouTube] [Prime Video] [Netflix] [Hotstar] [aha] [Appstore]     │
+│                                                                  │
+│ All apps · 15                                                    │
+│ [ ] [ ] [ ] [ ] [ ] [ ] [ ]                                      │
+│ [ ] [ ] [ ] [ ] [ ] [ ] [ ]                                      │
+└──────────────────────────────────────────────────────────────────┘
 ```
-Or simply uninstall RakeshTV. **Don't** follow reels that *disable* Amazon's launcher with ADB. On Fire TV that can leave you with no working home screen.
+
+- **Top left:** TV name, greeting, and **Inputs** (HDMI / AV)
+- **Top right:** clock with seconds, date, **Wi-Fi** status, **Bluetooth**, and **⚙** settings
+- **Favourites:** YouTube, Prime Video, Netflix, Hotstar, aha and Appstore (found automatically if installed)
+- **All apps:** 7 per row (changeable to 5–8), with no ads or sponsored rows
+- **Remote-friendly:** tiles zoom and glow as you move. Hold **OK** or press **☰ Menu** on any app to add it to favourites, move it left or right, hide it, open app info or uninstall it
+- **7 wallpaper themes** and **6 highlight colours**
+- **Lightweight:** plain Android with no extra libraries, so it suits the TV's small memory
 
 ---
 
-## 6. Updating later (over Wi-Fi)
-Change files on GitHub and it rebuilds automatically. Then on the TV, open **Downloader**, enter the **same link** again, and choose **Install**. Your favourites and settings are kept.
+## How RakeshTV takes over the TV
+
+Fire OS doesn't let apps become the real home screen, so RakeshTV uses two small helpers that bring it to the front at the right moments.
+
+```mermaid
+flowchart LR
+    P["TV switched on<br/>remote or wall socket"] --> F["Fire OS starts"]
+    F -- "start-up finished<br/>RakeshTV is first in line" --> B["Boot receiver"]
+    F -- "screen turns on" --> W["Wake listener<br/>runs in its own tiny process"]
+    B --> W
+    W -- "waits for Amazon home to load" --> R["RakeshTV home"]
+
+    A["Back or Home<br/>from YouTube, Netflix..."] --> H["Fire OS opens<br/>Amazon home"]
+    H --> S["Home helper<br/>accessibility service"]
+    S -- "switches straight away" --> R
+```
+
+| Situation | How fast RakeshTV appears |
+|---|---|
+| TV on with the **remote** (from standby) | about 1–2 s |
+| TV on at the **wall socket** (full start-up) | about 4 s after the Amazon home appears |
+| **Back** out of an app | under 1 s |
+| **Home** button | 0.5–4 s, because Android holds back non-system apps for up to 5 s after a Home press. Fire OS doesn't let apps capture the Home button itself |
+
+**What each piece does**
+- **Boot receiver** (`BootReceiver.java`): notices the TV has finished starting up. It has top priority, so it runs before other apps.
+- **Wake listener** (`WakeService.java`): notices when the screen turns on from standby and opens RakeshTV. It runs in a separate small process, so the home screen's memory can be freed while you watch something.
+- **Home helper** (`HomeOverrideService.java`): an accessibility service that only checks *which app* just opened. When it's the Amazon home, it switches to RakeshTV. It reads nothing else on screen.
+
+Both can be turned off in **⚙ settings**: *Open RakeshTV when TV turns on* and *Replace Fire TV home*.
 
 ---
 
-## 7. Customising (for tinkerers)
-- **Wallpapers and colours:** `app/src/main/java/com/lumen/tvlauncher/Themes.java`
-- **Default favourites on first launch:** `DEFAULT_FAVORITES` at the top of `MainActivity.java`
-- **Layout, tile sizes and clock:** `build()`, `buildHeader()` and `makeTile()` in `MainActivity.java`
+## How the app gets onto the TV
+
+```mermaid
+flowchart LR
+    C["Source code on Mac<br/>~/Downloads/RakeshTV"] -- "./gradlew assembleRelease" --> K["app-release.apk"]
+    K -- "adb install -r<br/>over home Wi-Fi" --> T["Redmi Fire TV"]
+    C -- "git push" --> G["GitHub<br/>rakeshbuildsit/RakeshTV"]
+    G -- "Actions builds automatically" --> A["Release<br/>RakeshTV.apk"]
+```
+
+- **Everyday route:** build on the Mac and install over Wi-Fi with ADB.
+- **Backup route:** every `git push` makes GitHub build a fresh **RakeshTV.apk** under **Releases**, with nothing to install. The repo is private, so you need to be signed in to download it.
+
+---
+
+## Setup (one time)
+
+### 1. Prepare the Fire TV
+1. **Settings → My Fire TV → About** → highlight the TV name → press **OK 7 times** to unlock **Developer options**.
+2. **Settings → My Fire TV → Developer options → ADB debugging → ON**.
+3. Note the TV's IP address under **Settings → My Fire TV → About → Network**.
+
+### 2. Prepare the Mac
+```bash
+brew install openjdk@17
+brew install --cask android-commandlinetools android-platform-tools
+export JAVA_HOME="/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home"
+export ANDROID_HOME="/opt/homebrew/share/android-commandlinetools"
+yes | sdkmanager --licenses
+sdkmanager "platforms;android-34" "build-tools;34.0.0"
+```
+
+### 3. Build and install
+```bash
+cd ~/Downloads/RakeshTV
+./gradlew assembleRelease
+adb connect <TV-IP>:5555
+adb install -r app/build/outputs/apk/release/app-release.apk
+```
+The first time, accept **"Allow USB debugging?"** on the TV and tick **Always allow**.
+
+### 4. Turn on the Home helper
+```bash
+adb shell settings put secure enabled_accessibility_services com.lumen.tvlauncher/com.lumen.tvlauncher.HomeOverrideService
+adb shell settings put secure accessibility_enabled 1
+```
+
+### 5. Open RakeshTV once on the TV
+This starts the wake listener. From now on it opens by itself.
+
+---
+
+## Updating
+
+```bash
+cd ~/Downloads/RakeshTV
+git pull                      # if you changed anything on GitHub
+./gradlew assembleRelease
+adb connect <TV-IP>:5555
+adb install -r app/build/outputs/apk/release/app-release.apk
+git add . && git commit -m "what changed" && git push
+```
+Then **open RakeshTV once** on the TV. Updating restarts the app, and your favourites and settings are kept. If the Home helper stops working after an update, run step 4 again.
+
+---
+
+## Going back to the normal Fire TV
+
+- **Temporarily:** ⚙ → *Replace Fire TV home* → **Off**, and ⚙ → *Open RakeshTV when TV turns on* → **Off**
+- **Completely:** `adb uninstall com.lumen.tvlauncher`, or **Settings → Applications → Manage Installed Applications → RakeshTV → Uninstall**
+
+Amazon's home screen is never changed or removed, so it comes straight back.
+
+> Don't follow online tricks that *disable* Amazon's launcher with ADB. On Fire TV that can leave you with no home screen at all.
+
+---
+
+## Project structure
+
+```
+RakeshTV/
+├── app/src/main/
+│   ├── AndroidManifest.xml              App, boot receiver, wake listener, Home helper
+│   ├── java/com/lumen/tvlauncher/
+│   │   ├── MainActivity.java            The home screen: header, favourites, app grid, ⚙ menu
+│   │   ├── AppEntry.java                Finds installed apps, icons and TV banners
+│   │   ├── Prefs.java                   Saved settings (favourites, theme, apps per row…)
+│   │   ├── Themes.java                  Wallpaper gradients and highlight colours
+│   │   ├── BootReceiver.java            Runs when the TV finishes starting up
+│   │   ├── WakeService.java             Opens RakeshTV when the screen turns on
+│   │   └── HomeOverrideService.java     Switches from Amazon home to RakeshTV
+│   └── res/
+│       ├── drawable-xhdpi/banner.png    "RakeshTV" banner shown in the Fire TV app list
+│       ├── drawable-xxxhdpi/ic_launcher.png
+│       └── xml/home_override_service.xml
+├── .github/workflows/build-apk.yml      Automatic cloud build
+└── build.gradle, settings.gradle, gradlew
+```
+
+## Customising
+
+- **Default favourites:** `DEFAULT_FAVORITES` at the top of `MainActivity.java`
+- **Wallpapers and colours:** `Themes.java`
+- **Tile sizes:** `makeTile()` and `build()` in `MainActivity.java` (favourites are 112×63, gaps 10)
+- **Apps per row default:** `getColumns()` in `Prefs.java`
+- **Power-on delay:** `openRakeshTVAfter(…)` in `WakeService.java`
+
+---
+
+Made by [@rakeshbuildsit](https://github.com/rakeshbuildsit)
